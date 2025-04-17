@@ -36,5 +36,64 @@ export class Controller{
         backBtn.addEventListener("click", () => addTrip.classList.add("d-none"));
 
         this.table = document.getElementById("body-tabela");
+
+        //Eventos do formulário
+        const form = document.getElementById("form-trip");
+
+        form.addEventListener("submit", (event) => this.validadeForm(event));
+          
       }
-}
+
+    validadeForm(event){
+          event.preventDefault();
+      
+          const passengerInput = document.getElementById("passenger");
+          const originInput = document.getElementById("origin");
+          const destinationInput = document.getElementById("destination");
+          const dateInput = document.getElementById("date");
+          const driverInput = document.getElementById("driver");
+          const valueInput = document.getElementById("value");
+          
+          let isValid = true;
+          
+          clearValidation(); // Remove classes anteriores
+          
+          if (!passengerInput.value.trim()) {
+            markInvalid(passengerInput);
+            isValid = false;
+          }
+          if (!originInput.value.trim()) {
+            markInvalid(originInput);
+            isValid = false;
+          }
+          if (!destinationInput.value.trim()) {
+            markInvalid(destinationInput);
+            isValid = false;
+          }
+          if (!dateInput.value) {
+            markInvalid(dateInput);
+            isValid = false;
+          }
+          if (!driverInput.value.trim()) {
+            markInvalid(driverInput);
+            isValid = false;
+          }
+          if (!valueInput.value.trim() || isNaN(parseFloat(valueInput.value))) {
+            markInvalid(valueInput);
+            isValid = false;
+          }
+          
+          if (isValid) {
+            alert("Formulário enviado com sucesso!");
+          }
+          
+          function markInvalid(input) {
+            input.classList.add("is-invalid");
+            input.focus(); // opcional: para ir direto ao campo inválido
+          }
+          function clearValidation() {
+            const inputs = document.querySelectorAll("input");
+            inputs.forEach(input => input.classList.remove("is-invalid"));
+          }
+        };
+    }
