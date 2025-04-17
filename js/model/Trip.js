@@ -1,11 +1,11 @@
 export class Trip{
     constructor(apiResponse) {
-        this.id = apiResponse.id;
+        this.id = apiResponse.id || Math.floor(Math.random() * 1000);
         this.passenger = apiResponse.passenger;
-        this.origin = apiResponse.oringin_address;
-        this.destination = apiResponse.destination_addres;
-        this.date = apiResponse.createdAt;
+        this.originAddress = apiResponse.originAddress || apiResponse.oringin_address;
+        this.destinationAddress = apiResponse.destinationAddress || apiResponse.destination_addres;
+        this.createdAt = apiResponse.createdAt || new Date();
         this.driver = apiResponse.driver;
-        this.value = apiResponse.fee;
+        this.fee = apiResponse.fee;
     }
 }

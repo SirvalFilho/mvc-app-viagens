@@ -8,13 +8,13 @@ export class TripView{
         return `
             <tr class="text-center">
                 <td>${this.trip.passenger}</td>
-                <td>${this.trip.origin}</td>
-                <td>${this.trip.destination}</td>
-                <td>${this.formatarData(this.trip.date)}</td>
+                <td>${this.trip.originAddress}</td>
+                <td>${this.trip.destinationAddress}</td>
+                <td>${this.formatarData(this.trip.createdAt)}</td>
                 <td>${this.trip.driver}</td>
-                <td>${this.trip.value}</td>
+                <td>${this.trip.fee}</td>
                 <td>
-                    <button class="btn btn-sm  btn-outline-danger btn-no-hover">
+                    <button class="btn btn-sm  btn-outline-danger btn-no-hover btn-delete" data-id="${this.trip.id}">
                         <i class="fa-solid fa-trash text-danger fa-lg"></i>
                     </button>
                 </td>
